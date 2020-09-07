@@ -1,4 +1,4 @@
-package app;
+package tictactoegame;
 
 import java.io.File;
 import java.io.FileInputStream;

@@ -1,5 +1,4 @@
-package app;
-
+package tictactoegame;
 import java.io.Serializable;
 
 public class Tile implements Serializable{

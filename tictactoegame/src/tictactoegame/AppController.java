@@ -1,4 +1,4 @@
-package app;
+package tictactoegame;
 
 import java.util.ArrayList;
 import javafx.event.Event;
@@ -8,7 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 
-public class Controller {
+public class AppController {
 
     private Game game;
     private SaveHandler file = new SaveFileHandler();

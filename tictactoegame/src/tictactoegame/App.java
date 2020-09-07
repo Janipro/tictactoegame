@@ -1,4 +1,4 @@
-package app;
+package tictactoegame;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -11,8 +11,8 @@ public class App extends Application{
 
     public void start(Stage primaryStage) throws Exception {
 
-        Parent root = FXMLLoader.load(getClass().getResource("bondesjakk.fxml"));
-        primaryStage.setTitle("Bondesjakk");
+        Parent root = FXMLLoader.load(getClass().getResource("AppController.fxml"));
+        primaryStage.setTitle("TicTacToe");
         primaryStage.setScene(new Scene(root, 800, 600));
         primaryStage.show();
     }
