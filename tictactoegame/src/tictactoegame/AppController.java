@@ -24,8 +24,6 @@ public class AppController {
 
     private ArrayList<Button> pushedButtons = new ArrayList<Button>();
 
-    public static void main(String[] args) {
-    }
 
     @FXML
     public void initialize() {
