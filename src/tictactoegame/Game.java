@@ -53,25 +53,31 @@ public class Game implements Serializable {
 
     public boolean hasWon(char player) {
         for (int i = 0; i < 3; i++) {
-            if (board[i][0].getPiece() == player && board[i][1].getPiece() == player
+            if (board[i][0].getPiece() == player
+                    && board[i][1].getPiece() == player
                     && board[i][2].getPiece() == player) {
                 return true;
             }
         }
 
         for (int i = 0; i < 3; i++) {
-            if (board[0][i].getPiece() == player && board[1][i].getPiece() == player
+            if (board[0][i].getPiece() == player
+                    && board[1][i].getPiece() == player
                     && board[2][i].getPiece() == player) {
                 return true;
             }
 
         }
 
-        if (board[0][0].getPiece() == player && board[1][1].getPiece() == player && board[2][2].getPiece() == player) {
+        if (board[0][0].getPiece() == player
+                && board[1][1].getPiece() == player
+                && board[2][2].getPiece() == player) {
             return true;
         }
 
-        if (board[0][2].getPiece() == player && board[1][1].getPiece() == player && board[2][0].getPiece() == player) {
+        if (board[0][2].getPiece() == player
+                && board[1][1].getPiece() == player
+                && board[2][0].getPiece() == player) {
             return true;
         }
 
