@@ -1,6 +1,9 @@
 package tictactoegame;
+
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
@@ -38,12 +41,12 @@ public class Game implements Serializable {
         return board[x][y].isPiece();
     }
 
-    public boolean placePiece(int x, int y) {
+    public boolean placePiece(int x, int y, char playerPiece) {
         if (isPiecePlaced(x, y)) {
             return false;
         }
 
-        if (hasWon('X')||hasWon('O')) {
+        if (hasWon('X') || hasWon('O')) {
             return false;
         }
 
@@ -75,21 +78,33 @@ public class Game implements Serializable {
             return true;
         }
 
-        if (board[0][2].getPiece() == player
+        return board[0][2].getPiece() == player
                 && board[1][1].getPiece() == player
-                && board[2][0].getPiece() == player) {
-            return true;
-        }
-
-        return false;
+                && board[2][0].getPiece() == player;
 
     }
 
-    public void changePlayerPiece() {
+    public void aiPlacePiece(ArrayList<Button> buttons) {
+        var aiPiece = '?';
         if (playerPiece == 'X') {
-            setPlayerPiece('O');
+            aiPiece = 'O';
         } else {
-            setPlayerPiece('X');
+            aiPiece = 'X';
+        }
+
+        List<Button> options = new ArrayList<>();
+        for (var button : buttons) {
+            if (button.getText().isEmpty()) {
+                options.add(button);
+            }
+        }
+
+        var random = new Random();
+        var buttonChoice = options.get(random.nextInt(options.size()));
+        var x = Integer.parseInt(buttonChoice.getId().substring(0, 1));
+        var y = Integer.parseInt(buttonChoice.getId().substring(1, 2));
+        if (placePiece(x, y, aiPiece)) {
+            buttonChoice.setText("" + aiPiece);
         }
     }
 
@@ -97,8 +112,7 @@ public class Game implements Serializable {
         this.playerPiece = playerPiece;
     }
 
-    public void updateUI(Pane pane, List<Button> pushedButtons) {
-
+    public void updateUI(Pane pane, List<Button> buttons) {
         for (var node : pane.getChildren()) {
             if (node instanceof Button) {
                 var button = (Button) node;
@@ -109,10 +123,9 @@ public class Game implements Serializable {
                 button.setText("" + tile.getPiece());
 
                 if (tile.isPiece()) {
-                    pushedButtons.add(button);
+                    buttons.add(button);
                 }
             }
         }
     }
-
 }
